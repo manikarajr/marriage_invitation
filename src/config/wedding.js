@@ -3,6 +3,9 @@
  * Edit values here — components never hard-code names, dates or links.
  */
 import invitationReference from '../assets/images/invitation-reference.jpeg'
+import couplePhoto1 from '../assets/images/couple-photo-1.jpg'
+import couplePhoto2 from '../assets/images/couple-photo-2.jpg'
+import couplePhoto3 from '../assets/images/couple-photo-3.jpg'
 
 export const wedding = {
   bride: 'J. Aslin Jebi',
@@ -83,13 +86,16 @@ export const portraits = {
  *   { type: 'image', src: '/images/photo-1.jpg', alt: 'Describe the photo' }
  * once the couple's photographs are available.
  */
+/** Short label shown on the engagement photos. */
+export const COMING_SOON_LABEL = 'Engagement Photos'
+
 export const gallery = [
-  { id: 'couple-illustration', type: 'crop', crop: 'couple', alt: 'Illustration of the bride and groom from the wedding invitation' },
-  { id: 'invitation-card', type: 'image', src: invitationReference, alt: 'The printed wedding invitation card', fit: 'contain' },
-  { id: 'placeholder-1', type: 'placeholder', caption: 'Photo coming soon', tone: 'navy' },
-  { id: 'placeholder-2', type: 'placeholder', caption: 'Photo coming soon', tone: 'sky' },
-  { id: 'placeholder-3', type: 'placeholder', caption: 'Photo coming soon', tone: 'ivory' },
-  { id: 'placeholder-4', type: 'placeholder', caption: 'Photo coming soon', tone: 'navy' },
+  { id: 'couple-photo-1', type: 'image', src: couplePhoto1, alt: 'Engagement photo: the bride and groom sharing a tender moment', badge: COMING_SOON_LABEL, position: 'center 30%' },
+  { id: 'couple-photo-2', type: 'image', src: couplePhoto2, alt: 'Engagement photo: close-up of the couple’s hands and golden jewellery', badge: COMING_SOON_LABEL },
+  { id: 'couple-photo-3', type: 'image', src: couplePhoto3, alt: 'Engagement photo: the groom embracing the bride from behind', badge: COMING_SOON_LABEL, position: 'center 35%' },
+  { id: 'placeholder-1', type: 'placeholder', caption: 'Wedding Photos Coming Soon', tone: 'navy' },
+  { id: 'placeholder-2', type: 'placeholder', caption: 'Wedding Photos Coming Soon', tone: 'sky' },
+  { id: 'placeholder-3', type: 'placeholder', caption: 'Wedding Photos Coming Soon', tone: 'ivory' },
 ]
 
 /** Clean URLs for each section (see src/utils/router.js). */

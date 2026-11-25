@@ -84,6 +84,7 @@ export default function GalleryMedia({ item, variant = 'tile' }) {
       loading="lazy"
       decoding="async"
       draggable="false"
+      style={item.position ? { objectPosition: item.position } : undefined}
       className={`absolute inset-0 h-full w-full select-none ${
         item.fit === 'contain' ? 'object-cover object-top' : 'object-cover'
       }`}

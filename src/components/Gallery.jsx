@@ -57,6 +57,11 @@ function TiltCard({ item, index, onOpen }) {
         className="group preserve-3d relative block aspect-4/5 w-full overflow-hidden rounded-2xl border-4 border-white bg-mist text-left shadow-float sm:rounded-3xl"
       >
         <GalleryMedia item={item} />
+        {item.badge && (
+          <span className="pointer-events-none absolute inset-x-0 bottom-0 bg-linear-to-t from-navy-deep/85 via-navy-deep/55 to-transparent px-2 pt-8 pb-3 text-center font-display text-[0.65rem] leading-tight font-semibold tracking-[0.18em] text-ivory uppercase sm:text-xs">
+            {item.badge}
+          </span>
+        )}
         {tilt && (
           <motion.span
             className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -65,7 +70,7 @@ function TiltCard({ item, index, onOpen }) {
           />
         )}
         <span
-          className="pointer-events-none absolute right-2 bottom-2 grid h-9 w-9 place-items-center rounded-full bg-white/85 text-navy opacity-0 shadow transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+          className="pointer-events-none absolute top-2 right-2 grid h-9 w-9 place-items-center rounded-full bg-white/85 text-navy opacity-0 shadow transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
           aria-hidden="true"
         >
           <Expand className="h-4 w-4" />

@@ -114,6 +114,11 @@ export default function Lightbox({ items, index, onClose, onChange }) {
               </div>
               <figcaption className="mt-4 max-w-[88vw] text-center font-serif text-sm text-ivory/85 italic sm:text-base">
                 {itemLabel(item)}
+                {item.badge && (
+                  <span className="mt-2 block font-display text-xs font-semibold tracking-[0.2em] text-sky uppercase not-italic">
+                    {item.badge}
+                  </span>
+                )}
               </figcaption>
             </motion.figure>
           </AnimatePresence>
