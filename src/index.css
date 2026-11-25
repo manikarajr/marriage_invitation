@@ -1,0 +1,174 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ */
+/*  Design tokens — taken from the printed invitation                  */
+/* ------------------------------------------------------------------ */
+@theme {
+  --color-navy: #172d57;
+  --color-navy-deep: #0f1f3f;
+  --color-navy-soft: #2c4677;
+  --color-sky: #a9c7e8;
+  --color-powder: #d6e4f4;
+  --color-mist: #eef4fb;
+  --color-ivory: #fff9f2;
+  --color-cream: #f8efe2;
+  --color-gold: #c9a66b;
+
+  --font-script: 'Great Vibes', 'Brush Script MT', cursive;
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+
+  --shadow-card: 0 1px 2px rgb(23 45 87 / 0.06), 0 12px 32px -8px rgb(23 45 87 / 0.18);
+  --shadow-float: 0 2px 4px rgb(23 45 87 / 0.06), 0 30px 60px -20px rgb(23 45 87 / 0.35);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Base                                                               */
+/* ------------------------------------------------------------------ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100svh;
+    background-color: var(--color-ivory);
+    color: var(--color-navy);
+    font-family: var(--font-serif);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body.scroll-locked {
+    overflow: hidden;
+  }
+
+  ::selection {
+    background: var(--color-sky);
+    color: var(--color-navy-deep);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-navy);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Helpers for 3D and texture                                         */
+/* ------------------------------------------------------------------ */
+@utility perspective-near {
+  perspective: 900px;
+}
+@utility perspective-far {
+  perspective: 1600px;
+}
+@utility preserve-3d {
+  transform-style: preserve-3d;
+}
+@utility backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Soft watercolour wash used for section backgrounds */
+@utility bg-watercolor {
+  background-color: var(--color-ivory);
+  background-image:
+    radial-gradient(60% 45% at 12% 18%, rgb(169 199 232 / 0.28), transparent 70%),
+    radial-gradient(55% 40% at 88% 82%, rgb(169 199 232 / 0.24), transparent 70%),
+    radial-gradient(40% 30% at 80% 10%, rgb(214 228 244 / 0.5), transparent 70%);
+}
+
+/* Fine paper grain for cards and envelope */
+@utility bg-paper {
+  background-color: var(--color-ivory);
+  background-image:
+    radial-gradient(120% 90% at 50% 0%, rgb(255 255 255 / 0.85), transparent 60%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.09 0 0 0 0 0.18 0 0 0 0 0.34 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Script text with a subtle ink sheen */
+@utility text-ink {
+  color: var(--color-navy);
+  text-shadow: 0 1px 0 rgb(255 255 255 / 0.6), 0 6px 18px rgb(23 45 87 / 0.12);
+}
+
+/* ------------------------------------------------------------------ */
+/*  Buttons                                                            */
+/* ------------------------------------------------------------------ */
+@layer components {
+  .btn {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    border-radius: 9999px;
+    padding: 0.75rem 1.75rem;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition:
+      transform 0.3s ease,
+      background-color 0.3s ease,
+      color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn-primary {
+    background-color: var(--color-navy);
+    color: var(--color-ivory);
+    box-shadow: 0 12px 28px -10px rgb(23 45 87 / 0.6);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-navy-soft);
+  }
+  .btn-outline {
+    border: 1.5px solid var(--color-navy);
+    color: var(--color-navy);
+    background-color: rgb(255 255 255 / 0.6);
+  }
+  .btn-outline:hover {
+    background-color: var(--color-navy);
+    color: var(--color-ivory);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reduced motion                                                     */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
